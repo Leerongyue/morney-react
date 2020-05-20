@@ -7,10 +7,11 @@ import {
   Route,
 } from 'react-router-dom';
 
-import styled from 'styled-components';
-import Nav from './components/Nav';
-import Layout from './components/Layout';
 
+import Money from './views/Money';
+import Statistics from './views/Statistics';
+import Tags from './views/Tags';
+import NoMatch from './views/NoMatch';
 
 
 function App() {
@@ -36,33 +37,5 @@ function App() {
 
 }
 
-function NoMatch() {
-  return (
-    <h2>页面不存在</h2>
-  );
-}
-
-function Tags() {
-  return (
-    <Layout>
-      Tags
-    </Layout>
-  );
-}
-
-function Statistics() {
-  return (
-    <Layout>
-      Statistics
-    </Layout>
-  );
-}
-
-function Money() {
-  return (
-    <Layout>Money
-    </Layout>
-  );
-}
 
 export default App;
