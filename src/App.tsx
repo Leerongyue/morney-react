@@ -1,4 +1,5 @@
 import React from 'react';
+import './index..scss';
 import {
   Redirect,
   HashRouter as Router,
@@ -7,28 +8,42 @@ import {
   Link
 } from 'react-router-dom';
 
-// import styled from 'styled-components';
+import styled from 'styled-components';
+import Nav from './components/Nav';
+
+const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+height:100vh;
+`;
+const Main = styled.div`
+flex-grow:1;
+overflow: auto;
+`;
+
 
 function App() {
   return (
     <Router>
-      <div>
-        <Switch >
-          <Redirect exact from="/" to="/money"/>
-          <Route path="/statistics">
-            <Statistics/>
-          </Route>
-          <Route path="/money">
-            <Money/>
-          </Route>
-          <Route path="/tags">
-            <Tags/>
-          </Route>
-          <Route path="*">
-            <NoMatch/>
-          </Route>
-        </Switch>
-        <nav>
+      <Wrapper>
+        <Main>
+          <Switch>
+            <Redirect exact from="/" to="/money"/>
+            <Route path="/statistics">
+              <Statistics/>
+            </Route>
+            <Route path="/money">
+              <Money/>
+            </Route>
+            <Route path="/tags">
+              <Tags/>
+            </Route>
+            <Route path="*">
+              <NoMatch/>
+            </Route>
+          </Switch>
+        </Main>
+        <Nav>
           <ul>
             <li>
               <Link to="/tags">Tags</Link>
@@ -40,8 +55,8 @@ function App() {
               <Link to="/statistics">Statistics</Link>
             </li>
           </ul>
-        </nav>
-      </div>
+        </Nav>
+      </Wrapper>
     </Router>
   );
 
