@@ -35,5 +35,10 @@ body {
 :focus{
   outline: none;
 }
+.clearFix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
 
 
