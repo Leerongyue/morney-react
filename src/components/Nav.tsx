@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import { NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import React from 'react';
 import Icon from './Icon';
 
 const NavWrapper = styled.div`
   box-shadow: 0 0 3px rgba(0,0,0,0.25);
+  background:white;
   >ul{
      display: flex;
      justify-content: space-around;
