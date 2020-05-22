@@ -5,6 +5,11 @@ import styled from 'styled-components';
 const TagsSection = styled.section`
 padding:0 16px;
 background: #FFFFFF;
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-end;
   >button{
   background:none;
   border:none;
@@ -127,10 +132,14 @@ const NumberPadSection = styled.section`
 }
 
 `;
+const MyLayout = styled(Layout)`
+display: flex;
+flex-direction: column;
+`;
 
 function Money() {
   return (
-    <Layout>
+    <MyLayout>
       <TagsSection>
         <ol>
           <li>衣</li>
@@ -170,7 +179,7 @@ function Money() {
           <button>7</button>
           <button>8</button>
           <button>9</button>
-          <button>x</button>
+          <button>×</button>
           <button className={'ok'}>ok</button>
           <button>.</button>
           <button>0</button>
@@ -178,7 +187,7 @@ function Money() {
           <button>÷</button>
         </div>
       </NumberPadSection>
-    </Layout>
+    </MyLayout>
   );
 }
 

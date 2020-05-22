@@ -17,7 +17,7 @@ overflow: auto;
 const Layout = (props: any) => {
   return (
     <Wrapper>
-      <h2>{props.children}</h2>
+      <h2 className={props.className}>{props.children}</h2>
       <Nav/>
     </Wrapper>
   );
