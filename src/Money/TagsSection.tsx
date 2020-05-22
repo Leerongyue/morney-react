@@ -1,6 +1,11 @@
 import styled from 'styled-components';
+import React, {useState} from 'react';
+import {Button, MessageBox, Message} from 'element-react';
+import 'element-theme-default';
+import 'index..scss';
 
-const TagsSection = styled.section`
+
+const Wrapper = styled.section`
 padding:0 16px;
 background: #FFFFFF;
 flex-grow: 1;
@@ -8,7 +13,8 @@ display: flex;
 flex-direction: column;
 align-items: flex-start;
 justify-content: flex-end;
-  >button{
+  
+  >Button{
   background:none;
   border:none;
   border-bottom: 1px solid #666;
@@ -17,6 +23,7 @@ justify-content: flex-end;
   padding:0 4px;
   margin-bottom: 12px;
   margin-top:18px ;
+  border-radius: 0;
   outline: none;
   }
     >ol{
@@ -28,9 +35,51 @@ justify-content: flex-end;
         margin-right: 24px;
         margin-top:18px ;
         font-size: 14px;
-        text-align: center;
+        text-align: center;  
+        &.xxx{
+        background:#f60;
+        }
       }
     }
-    
+   
 `;
-export {TagsSection}
+
+const TagsSection: React.FC = () => {
+  const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
+  let [selectedTag, setSelectedTag] = useState<string[]>([]);
+  const onAddTag = () => {
+    MessageBox.prompt('请输入标签名', '提示', {
+      inputPattern: /^[a-zA-Z\u4e00-\u9fa5]+$/,
+      inputErrorMessage: '请输入中文或英文'
+    }).then((tag: any) => {
+      setTags([...tags, tag.value]);
+      Message({
+        type: 'success',
+        message: '添加成功 '
+      });
+    }).catch(() => {
+    });
+  };
+  const onSelectTag = (tag: string) => {
+    const index = selectedTag.indexOf(tag);
+    if (index >= 0) {
+      // selectedTag.splice(index, 1);
+      // setSelectedTag ([...selectedTag])
+      setSelectedTag ([])
+    } else {
+      // setSelectedTag([...selectedTag,tag]);
+      setSelectedTag([tag]);
+    }
+  };
+  return (
+    <Wrapper>
+      <ol>
+        {tags.map(tag => <li className={selectedTag.indexOf(tag) >=0 ? 'xxx' : ''} onClick={() => {onSelectTag(tag);}}
+                             key={tag}>{tag}</li>)}
+      </ol>
+      <Button type="text" onClick={onAddTag}>添加标签</Button>
+    </Wrapper>
+  );
+};
+
+export {TagsSection};

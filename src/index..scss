@@ -32,16 +32,32 @@ body {
   line-height: 1.2;
   background: #E5E5E5;
 }
-:focus{
+
+:focus {
   outline: none;
 }
-.clearFix::after{
+
+.clearFix::after {
   content: '';
   display: block;
   clear: both;
 }
-//.xxx{
-//  border:1px solid red;
-//}
-//
-//
+
+* {
+  > .el-message-box {
+    width: 320px !important;
+    height: 200px !important;
+
+    > .el-message-box__header {
+      margin-bottom: 20px;
+    }
+
+    > .el-message-box__content {
+      padding: 0 20px;
+    }
+
+    > .el-message-box__btns {
+      padding-top: 0;
+    }
+  }
+}

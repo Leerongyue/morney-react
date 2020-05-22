@@ -6,6 +6,7 @@ import {NotesSection} from '../Money/NotesSection';
 import {NumberPadSection} from '../Money/NumberPadSection';
 import {TagsSection} from '../Money/TagsSection';
 
+
 const MyLayout = styled(Layout)`
 display: flex;
 flex-direction: column;
@@ -15,13 +16,7 @@ function Money() {
   return (
     <MyLayout>
       <TagsSection>
-        <ol>
-          <li>衣</li>
-          <li>食</li>
-          <li>住</li>
-          <li>行</li>
-        </ol>
-        <button>添加标签</button>
+
       </TagsSection>
       <NotesSection>
         <label>
