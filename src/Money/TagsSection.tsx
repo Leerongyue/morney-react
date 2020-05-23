@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, {useState} from 'react';
-import {Button, MessageBox, Message} from 'element-react';
+import {Button, MessageBox} from 'element-react';
 import 'element-theme-default';
 import 'index..scss';
 
@@ -53,10 +53,10 @@ const TagsSection: React.FC = () => {
       inputErrorMessage: '请输入中文或英文'
     }).then((tag: any) => {
       setTags([...tags, tag.value]);
-      Message({
-        type: 'success',
-        message: '添加成功 '
-      });
+      // Message({
+      //   type: 'success',
+      //   message: ''
+      // });
     }).catch(() => {
     });
   };
