@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import React, {useState} from 'react';
+import React from 'react';
 import {Button, MessageBox} from 'element-react';
 import 'element-theme-default';
 import 'index..scss';
+import {useTags} from './useTags';
 
 
 const Wrapper = styled.section`
@@ -45,11 +46,11 @@ justify-content: flex-end;
 `;
 type Props = {
   value: string[],
-  onChange: (selected:string[]) => void
+  onChange: (selected: string[]) => void
 }
 
 const TagsSection: React.FC<Props> = (props) => {
-  const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
+  const {tags, setTags} = useTags();
   const selectedTag = props.value;
   const onAddTag = () => {
     MessageBox.prompt('请输入标签名', '提示', {
