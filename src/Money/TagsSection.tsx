@@ -43,10 +43,14 @@ justify-content: flex-end;
     }
    
 `;
+type Props = {
+  value: string[],
+  onChange: (selected:string[]) => void
+}
 
-const TagsSection: React.FC = () => {
+const TagsSection: React.FC<Props> = (props) => {
   const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-  const [selectedTag, setSelectedTag] = useState<string[]>([]);
+  const selectedTag = props.value;
   const onAddTag = () => {
     MessageBox.prompt('请输入标签名', '提示', {
       inputPattern: /^[a-zA-Z\u4e00-\u9fa5]+$/,
@@ -66,10 +70,10 @@ const TagsSection: React.FC = () => {
     if (index >= 0) {
       // selectedTag.splice(index, 1);
       // setSelectedTag ([...selectedTag])
-      setSelectedTag([]);
+      props.onChange([]);
     } else {
       // setSelectedTag([...selectedTag,tag]);
-      setSelectedTag([tag]);
+      props.onChange([tag]);
     }
   };
   return (

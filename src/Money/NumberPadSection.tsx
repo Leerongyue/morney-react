@@ -1,14 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Wrapper from './NumberPadSection/NumberPadSection';
 import generateOutput from './NumberPadSection/generateOutput';
 
-const NumberPadSection = () => {
-  const [output, _setOutput] = useState('0');
+type Props = {
+  value: string,
+  onChange: (output: string) => void,
+  onOk: () => void
+}
+const NumberPadSection: React.FC<Props> = (props) => {
+  const output = props.value;
   const setOutput = (str: string) => {
     if (str.length > 16) {
       str = str.slice(0, 16);
     }
-    _setOutput(str);
+    props.onChange(str);
   };
   const onclickButtonWrapper = (e: React.MouseEvent) => {
     //事件委托
@@ -16,6 +21,7 @@ const NumberPadSection = () => {
     if (text) {
       setOutput(generateOutput(text, output));
     }
+    if (text === 'ok') {}
   };
   return (
     <Wrapper>

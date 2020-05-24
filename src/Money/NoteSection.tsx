@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, {useState} from 'react';
+import React from 'react';
 
 const Wrapper = styled.section`
 >label{
@@ -21,9 +21,12 @@ align-items: center;
 }
 `;
 
-const NoteSection = () => {
-  const [note, setNote] = useState('');
-  console.log(note);
+type Props = {
+  value: string,
+  onChange: (note: string) => void
+}
+const NoteSection: React.FC<Props> = (props) => {
+  const note = props.value;
   return (
     <Wrapper>
       <label>
@@ -32,7 +35,7 @@ const NoteSection = () => {
           type="text"
           placeholder={'在这里添加备注'}
           value={note}
-          onChange={(e) => setNote(e.target.value)}
+          onChange={(e) => props.onChange(e.target.value)}
         />
       </label>
     </Wrapper>
