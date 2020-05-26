@@ -13,10 +13,14 @@ flex-direction: column;
 `;
 
 type Category = '-' | '+'
+type Tag = {
+  id: number;
+  name: string
+}
 
 function Money() {
   const [selected, setSelected] = useState({
-    tags: [] as number[],
+    tags: [] as Tag[],
     note: '',
     category: '-' as Category,
     amount: '0'
@@ -29,8 +33,9 @@ function Money() {
   };
   return (
     <MyLayout>
+      {JSON.stringify(selected.tags[0])}
       <TagsSection
-        value={selected.tags}
+        value={[selected.tags[0] ? selected.tags[0].id : 0]}
         onChange={(tags) => onChange({tags})}
       />
       <NoteSection

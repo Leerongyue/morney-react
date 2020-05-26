@@ -4,6 +4,7 @@ import {Button, MessageBox} from 'element-react';
 import 'element-theme-default';
 import 'index..scss';
 import {useTags} from './useTags';
+import {createId} from '../lib/createId';
 
 
 const Wrapper = styled.section`
@@ -44,9 +45,13 @@ justify-content: flex-end;
     }
    
 `;
+type Tag = {
+  id: number,
+  name: string
+}
 type Props = {
   value: number[],
-  onChange: (selected: number[]) => void
+  onChange: (selected:Tag[]) => void
 }
 
 const TagsSection: React.FC<Props> = (props) => {
@@ -56,8 +61,8 @@ const TagsSection: React.FC<Props> = (props) => {
     MessageBox.prompt('请输入标签名', '提示', {
       inputPattern: /^[a-zA-Z\u4e00-\u9fa5]+$/,
       inputErrorMessage: '请输入中文或英文',
-    }).then((tag: any) => {
-      setTags([...tags, {id: Math.random(), name: tag.value}]);
+    }).then((input: any) => {
+      setTags([...tags, {id: createId(), name: input.value}]);
       // window.scroll(0,100)
       // Message({
       //   type: 'success',
@@ -66,22 +71,22 @@ const TagsSection: React.FC<Props> = (props) => {
     }).catch(() => {
     });
   };
-  const onSelectTag = (tagId: number) => {
-    const index = selectedTag.indexOf(tagId);
+  const onSelectTag = (tag: { id: number, name: string }) => {
+    const index = selectedTag.indexOf(tag.id);
     if (index >= 0) {
       // selectedTag.splice(index, 1);
       // setSelectedTag ([...selectedTag])
       props.onChange([]);
     } else {
       // setSelectedTag([...selectedTag,tag]);
-      props.onChange([tagId]);
+      props.onChange([tag]);
     }
   };
   return (
     <Wrapper>
       <ol>
         {tags.map(tag => <li className={selectedTag.indexOf(tag.id) >= 0 ? 'xxx' : ''}
-                             onClick={() => {onSelectTag(tag.id);}}
+                             onClick={() => {onSelectTag(tag);}}
                              key={tag.id}>{tag.name}</li>)}
       </ol>
       <Button type="text" onClick={onAddTag}>添加标签</Button>
