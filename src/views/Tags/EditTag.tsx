@@ -10,9 +10,20 @@ type Params = {
   id: string;
 }
 const Header = styled.header`
+display: flex;
+font-size: 16px;
+align-items: center;
+background:#fff;
+padding-left: 16px;
 >svg{
-width:16px;
-height:16px;
+width:20px;
+height:40px;
+margin-right: 146px;
+padding:8px 0;
+}
+>span{
+line-height: 20px;
+padding:14px 0;
 }
 `;
 
