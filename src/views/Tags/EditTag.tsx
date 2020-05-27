@@ -35,28 +35,35 @@ background:#ffffff;
 `;
 
 const EditTag = () => {
-  const {findTag, updateTag,tags} = useTags();
+  const {findTag, updateTag, deleteTag} = useTags();
   let {id} = useParams<Params>();//从url中找id(string)
   const tag = findTag(parseInt(id));
-  return (
-    <Layout>
-      {JSON.stringify(tags)}
-      <Header>
-        <Icon name={'left'}/>
-        <span>编辑标签</span>
-      </Header>
-      <InputWrapper>
-        <Input
-          label={'fuck'}
-          defaultValue={tag.name}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => updateTag(parseInt(id), {name: e.target.value})}
-        >
-        </Input>
-      </InputWrapper>
-      <ButtonWrapper>
-        <Button>删除标签</Button>
-      </ButtonWrapper>
-    </Layout>
-  );
+
+  if (tag) {
+    return (
+      <Layout>
+        <Header>
+          <Icon name={'left'}/>
+          <span>编辑标签</span>
+        </Header>
+        <InputWrapper>
+          <Input
+            label={'fuck'}
+            defaultValue={tag.name}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => updateTag(parseInt(id), {name: e.target.value})}
+          >
+          </Input>
+        </InputWrapper>
+        <ButtonWrapper>
+          <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+        </ButtonWrapper>
+      </Layout>
+    );
+  } else {
+    return (
+      <div>删除成功</div>
+    );
+  }
+
 };
 export {EditTag};
