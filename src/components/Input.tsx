@@ -4,17 +4,18 @@ import styled from 'styled-components';
 
 const Wrapper = styled.section`
 >label{
-background:#f5f5f5;
 display: flex;
 align-items: center;
-  >span{
+justify-content: center;
+font-size: 16px;
+>span{
   white-space: nowrap;
   margin-left: 16px; 
   margin-right: 16px;
-  font-size: 14px;
  }
-  input{
-  height:72px;
+  >input{
+  font-size: 16px;
+  height:44px;
   width:100%; 
   background:none;
   border: none;
@@ -22,21 +23,16 @@ align-items: center;
 }
 `;
 type Props = {
-  note?: string,
-  change: (s:string) => void
-}
+  label: string,
+} & React.InputHTMLAttributes<HTMLInputElement>
 
 const Input: React.FC<Props> = (props) => {
+  const {label,children, ...rest} = props;
   return (
     <Wrapper>
       <label>
-        <span>备注</span>
-        <input
-          type="text"
-          placeholder={'在这里添加备注'}
-          value={props.note}
-          onChange={(e) =>  props.change(e.target.value)}
-        />
+        <span>{label}</span>
+        <input {...rest}></input>
       </label>
     </Wrapper>
   );

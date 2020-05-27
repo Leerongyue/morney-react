@@ -33,8 +33,6 @@ function Money() {
   };
   return (
     <MyLayout>
-      {selected.note}
-      {JSON.stringify(selected.tags[0])}
       <TagsSection
         value={[selected.tags[0] ? selected.tags[0].id : 0]}
         onChange={(tags) => onChange({tags})}

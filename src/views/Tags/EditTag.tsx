@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import {useTags} from '../../Money/useTags';
 import {useParams} from 'react-router-dom';
 import Layout from '../../components/Layout';
 import Icon from '../../components/Icon';
 import styled from 'styled-components';
 import {Button, ButtonWrapper} from '../../components/Button';
+import Input from '../../components/Input';
 
 type Params = {
   id: string;
@@ -26,24 +27,32 @@ line-height: 20px;
 padding:14px 0;
 }
 `;
+const InputWrapper = styled.div`
+margin-top: 8px;
+font-size: 16px;
+background:#ffffff;
+
+`;
 
 const EditTag = () => {
-  const {findTag} = useTags();
-  let {id} = useParams<Params>();//从url中找id
+  const {findTag, updateTag,tags} = useTags();
+  let {id} = useParams<Params>();//从url中找id(string)
   const tag = findTag(parseInt(id));
   return (
     <Layout>
+      {JSON.stringify(tags)}
       <Header>
         <Icon name={'left'}/>
         <span>编辑标签</span>
       </Header>
-      <label>
-        <span>标签名</span>
-        <input
-          type="text"
+      <InputWrapper>
+        <Input
+          label={'fuck'}
           defaultValue={tag.name}
-        />
-      </label>
+          onChange={(e: ChangeEvent<HTMLInputElement>) => updateTag(parseInt(id), {name: e.target.value})}
+        >
+        </Input>
+      </InputWrapper>
       <ButtonWrapper>
         <Button>删除标签</Button>
       </ButtonWrapper>
