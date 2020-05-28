@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import React from 'react';
-import {Button, MessageBox} from 'element-react';
+import {Button} from 'element-react';
 import 'element-theme-default';
 import 'index..scss';
-import {useTags} from './useTags';
-import {createId} from '../lib/createId';
+import {useTags} from '../components/useTags';
 
 
 const Wrapper = styled.section`
@@ -51,26 +50,13 @@ type Tag = {
 }
 type Props = {
   value: number[],
-  onChange: (selected:Tag[]) => void
+  onChange: (selected: Tag[]) => void
 }
 
 const TagsSection: React.FC<Props> = (props) => {
-  const {tags, setTags} = useTags();
+  const {tags, addTag} = useTags();
   const selectedTag = props.value;
-  const onAddTag = () => {
-    MessageBox.prompt('请输入标签名', '提示', {
-      inputPattern: /^[a-zA-Z\u4e00-\u9fa5]+$/,
-      inputErrorMessage: '请输入中文或英文',
-    }).then((input: any) => {
-      setTags([...tags, {id: createId(), name: input.value}]);
-      // window.scroll(0,100)
-      // Message({
-      //   type: 'success',
-      //   message: ''
-      // });
-    }).catch(() => {
-    });
-  };
+
   const onSelectTag = (tag: { id: number, name: string }) => {
     const index = selectedTag.indexOf(tag.id);
     if (index >= 0) {
@@ -89,7 +75,7 @@ const TagsSection: React.FC<Props> = (props) => {
                              onClick={() => {onSelectTag(tag);}}
                              key={tag.id}>{tag.name}</li>)}
       </ol>
-      <Button type="text" onClick={onAddTag}>添加标签</Button>
+      <Button type="text" onClick={() => {addTag();}}>添加标签</Button>
     </Wrapper>
   );
 };

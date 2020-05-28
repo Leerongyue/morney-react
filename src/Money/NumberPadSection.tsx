@@ -21,7 +21,9 @@ const NumberPadSection: React.FC<Props> = (props) => {
     if (text) {
       setOutput(generateOutput(text, output));
     }
-    if (text === 'ok') {}
+    if (text === 'ok') {
+      props.onOk();
+    }
   };
   return (
     <Wrapper>

@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import React from 'react';
-import {useTags} from '../Money/useTags';
+import {useTags} from '../components/useTags';
 import styled from 'styled-components';
 import Icon from '../components/Icon';
 import {Link} from 'react-router-dom';
@@ -27,7 +27,7 @@ background: #FFFFFF;
 
 
 function Tags() {
-  const {tags} = useTags();
+  const {tags, addTag} = useTags();
   return (
     <Layout>
       <TagList>
@@ -40,7 +40,7 @@ function Tags() {
           </li>)}
       </TagList>
       <ButtonWrapper>
-        <Button>新建标签</Button>
+        <Button onClick={() => {addTag();}}>新建标签</Button>
       </ButtonWrapper>
     </Layout>
   );

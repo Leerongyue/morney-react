@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
-import {useTags} from '../../Money/useTags';
-import {useParams} from 'react-router-dom';
+import {useTags} from '../../components/useTags';
+import {useParams, useHistory} from 'react-router-dom';
 import Layout from '../../components/Layout';
 import Icon from '../../components/Icon';
 import styled from 'styled-components';
@@ -38,17 +38,21 @@ const EditTag = () => {
   const {findTag, updateTag, deleteTag} = useTags();
   let {id} = useParams<Params>();//从url中找id(string)
   const tag = findTag(parseInt(id));
+  const history = useHistory();
+  const back = () => {
+    history.goBack();
+  };
 
   if (tag) {
     return (
       <Layout>
         <Header>
-          <Icon name={'left'}/>
+          <Icon name={'left'} onClick={back}/>
           <span>编辑标签</span>
         </Header>
         <InputWrapper>
           <Input
-            label={'fuck'}
+            label={'标签名'}
             defaultValue={tag.name}
             onChange={(e: ChangeEvent<HTMLInputElement>) => updateTag(parseInt(id), {name: e.target.value})}
           >
