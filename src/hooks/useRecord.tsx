@@ -53,7 +53,7 @@ const useRecord = () => {
     useUpdate(() => {
       window.localStorage.setItem('records', JSON.stringify(records));
     }, records);
-    return {records, setRecord, addRecord, success};
+    return {records, setRecord, addRecord, success, warning};
   }
 
 

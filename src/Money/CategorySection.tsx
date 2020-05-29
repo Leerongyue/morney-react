@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import React, {useState} from 'react';
 
+const CategoryWrapper = styled.div`
+background:#c4c4c4;
+`;
 const Wrapper = styled.section`
 >ul{
  display: flex;
  flex-direction: row;
  text-align: center;
- background: #C4C4C4;  
   >li{
   position: relative;
   width:50%;
@@ -35,6 +37,7 @@ const CategorySection: React.FC<Props> = (props) => {
   const [categoryList] = useState<('+' | '-')[]>(['-', '+']);
   const category = props.value;
   return (
+    <CategoryWrapper>
     <Wrapper>
       <ul>
         {categoryList.map(c =>
@@ -48,6 +51,7 @@ const CategorySection: React.FC<Props> = (props) => {
         )}
       </ul>
     </Wrapper>
+    </CategoryWrapper>
   );
 };
 export {CategorySection};
