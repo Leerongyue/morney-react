@@ -6,6 +6,7 @@ import {NoteSection} from '../Money/NoteSection';
 import {NumberPadSection} from '../Money/NumberPadSection';
 import {TagsSection} from '../Money/TagsSection';
 import useRecord from '../hooks/useRecord';
+import {createId} from '../lib/createId';
 
 
 const MyLayout = styled(Layout)`
@@ -27,8 +28,10 @@ const defaultValue = {
 
 function Money() {
   const [selected, setSelected] = useState(defaultValue);
-  const {addRecord, success} = useRecord();
+  // console.log(selected);
+  const {addRecord, warning, success} = useRecord();
   const onChange = (obj: Partial<typeof selected>) => {
+    // console.log(1);
     setSelected({
       ...selected,
       ...obj
@@ -36,7 +39,13 @@ function Money() {
   };
 
   const submit = () => {
-    if (addRecord(selected)) {
+    if (!(selected.tags[0])) {
+      warning(() => '请输入标签');
+      return;
+    } else if (selected.amount === '0') {
+      warning(() => '请输入金额');
+    } else {
+      selected.tags[0] && addRecord({...selected, tags: [{id: createId() - 4, name: selected.tags[0].name}]});
       success();
       setSelected(defaultValue);
     }

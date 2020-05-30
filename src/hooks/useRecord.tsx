@@ -8,7 +8,7 @@ type Tag = {
   name: string
 }
 type Category = '-' | '+'
-type RecordItem = {
+export type RecordItem = {
   tags: Tag[]
   note: string
   category: Category
@@ -33,17 +33,8 @@ const useRecord = () => {
       });
     };
     const addRecord = (newRecord: newRecordItem) => {
-      if (newRecord.tags.length === 0) {
-        warning(() => '请选择标签');
-        return false;
-      }
-      if (newRecord.amount === '0') {
-        warning(() => '请输入金额');
-        return false;
-      }
       const record = {...newRecord, createdAt: (new Date()).toISOString()};
       setRecord([...records, record]);
-      return true;
     };
 
     useEffect(() => {
