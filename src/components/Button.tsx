@@ -11,4 +11,4 @@ margin: 44px;
 const ButtonWrapper = styled.div`
 text-align: center;
 `;
-export {Button, ButtonWrapper};
+export  {Button, ButtonWrapper};

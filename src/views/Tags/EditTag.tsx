@@ -19,7 +19,7 @@ padding-left: 16px;
 >svg{
 width:20px;
 height:40px;
-margin-right: 146px;
+margin-right: 139px;
 padding:8px 0;
 }
 >span{
@@ -32,6 +32,10 @@ margin-top: 8px;
 font-size: 16px;
 background:#ffffff;
 
+`;
+const Wrapper = styled.div`
+text-align: center;
+margin-top: 16px;
 `;
 
 const EditTag = () => {
@@ -65,9 +69,16 @@ const EditTag = () => {
     );
   } else {
     return (
-      <div>删除成功</div>
+      <Layout>
+        <Header>
+          <Icon name={'left'} onClick={back}/>
+          <span>编辑标签</span>
+        </Header>
+        <Wrapper>
+          <div>删除成功</div>
+        </Wrapper>
+      </Layout>
     );
   }
-
 };
 export {EditTag};

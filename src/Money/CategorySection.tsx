@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, {useState} from 'react';
 
-const CategoryWrapper = styled.div`
+const CategoryWrapper = styled.section`
 background:#c4c4c4;
 `;
 const Wrapper = styled.section`

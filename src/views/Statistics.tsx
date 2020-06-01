@@ -72,16 +72,16 @@ function Statistics() {
     }
     return 0;
   });
-  const sum = () => {
-    const arrAmount = arr.map(a => a[1].map(r => parseFloat(r.amount)))[0];
-    let arrSum = 0;
-    for (let i = 0; i < arrAmount.length; i++) {
-      arrSum += arrAmount[i];
-    }
-    return arrSum;
-  };
+  // const sum = () => {
+  //   const arrAmount = arr.map(a => a[1].map(r => parseFloat(r.amount)))[0];
+  //   let arrSum = 0;
+  //   for (let i = 0; i < arrAmount.length; i++) {
+  //     arrSum += arrAmount[i];
+  //   }
+  //   return arrSum;
+  // };
   return (
-    <Layout>
+    <Layout scrollTop={9999}>
       <CategoryWrapper>
         <CategorySection
           value={category}
@@ -94,7 +94,7 @@ function Statistics() {
             {/*/////////////////////////////////////*/}
             <div className={'day'}>
               <span>{r[0]}</span>
-              <span>￥{sum()}</span>
+              {/*<span>￥{sum()}</span>*/}
             </div>
             <div className={'item'}>
               {r[1].map(a =>

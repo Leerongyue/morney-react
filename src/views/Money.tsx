@@ -51,9 +51,7 @@ function Money() {
     }
   };
   return (
-    <MyLayout>
-      {/*{JSON.stringify(records)}*/}
-      {/*{JSON.stringify(selected)}*/}
+    <MyLayout scrollTop={99999}>
       <TagsSection
         value={[selected.tags[0] ? selected.tags[0].id : 0]}
         onChange={(tags) => onChange({tags})}

@@ -29,7 +29,8 @@ background: #FFFFFF;
 function Tags() {
   const {tags, addTag} = useTags();
   return (
-    <Layout>
+
+    <Layout scrollTop={9999}>
       <TagList>
         {tags.map(tag =>
           <li key={tag.id}>

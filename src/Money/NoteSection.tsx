@@ -7,7 +7,7 @@ type Props = {
   value: string,
   onChange: (note: string) => void
 }
-const Wrapper = styled.div`
+const Wrapper = styled.section`
 padding:10px 0;
 `;
 const NoteSection: React.FC<Props> = (props) => {

@@ -1,49 +1,44 @@
 import styled from 'styled-components';
 import React from 'react';
-import {Button} from 'element-react';
 import 'element-theme-default';
 import 'index..scss';
 import {useTags} from '../components/useTags';
 
 
 const Wrapper = styled.section`
-padding:0 16px;
 background: #FFFFFF;
-flex-grow: 1;
+padding-left: 16px;
 display: flex;
 flex-direction: column;
 align-items: flex-start;
 justify-content: flex-end;
-  
-  >Button{
+flex-grow: 1;
+>.button{
   background:none;
   border:none;
   border-bottom: 1px solid #666;
   color: #999999;
   font-size: 14px;
   padding:0 4px;
-  margin-bottom: 12px;
-  margin-top:18px ;
-  border-radius: 0;
-  outline: none;
+  margin: 14px 0;
   }
-    >ol{
-      >li{
-        display: inline-block;
-        background: #D9D9D9;
-        border-radius: 18px;
-        padding:3px 16px;
-        margin-right: 24px;
-        margin-top:18px ;
-        font-size: 14px;
-        text-align: center;  
-        &.xxx{
-        background:#f60;
-        }
+>ol{
+    >li{
+      background: #D9D9D9;
+      display: inline-block;
+      border-radius: 18px;
+      padding:3px 16px;
+      margin-right: 24px;
+      margin-top:18px ;
+      font-size: 14px;
+      text-align: center;  
+      &.xxx{
+      background:#f60;
       }
     }
-   
+  }
 `;
+
 type Tag = {
   id: number,
   name: string
@@ -75,7 +70,7 @@ const TagsSection: React.FC<Props> = (props) => {
                              onClick={() => {onSelectTag(tag);}}
                              key={tag.id}>{tag.name}</li>)}
       </ol>
-      <Button type="text" onClick={() => {addTag();}}>添加标签</Button>
+      <button className={'button'} onClick={() => {addTag();}}> 添加标签</button>
     </Wrapper>
   );
 };
