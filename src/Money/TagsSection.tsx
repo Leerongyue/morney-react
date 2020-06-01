@@ -8,18 +8,20 @@ import {useTags} from '../components/useTags';
 const Wrapper = styled.section`
 background: #FFFFFF;
 padding-left: 16px;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-justify-content: flex-end;
+//display: flex;
+//flex-direction: column;
+//align-items: flex-start;
+//justify-content: flex-end;
 flex-grow: 1;
+
 >.button{
+  display: inline;
   background:none;
   border:none;
   border-bottom: 1px solid #666;
   color: #999999;
   font-size: 14px;
-  padding:0 4px;
+  padding:0px 4px;
   margin: 14px 0;
   }
 >ol{

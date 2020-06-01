@@ -9,6 +9,7 @@ import {ButtonWrapper, Button} from '../components/Button';
 const TagList = styled.ol`
 font-size: 16px;
 background: #FFFFFF;
+
 >li{
   border-bottom: 1px solid #dbdbdd;
   margin-left: 16px;
@@ -40,9 +41,12 @@ function Tags() {
             </Link>
           </li>)}
       </TagList>
+        <div className={'ddd'}>
       <ButtonWrapper>
         <Button onClick={() => {addTag();}}>新建标签</Button>
       </ButtonWrapper>
+        </div>
+
     </Layout>
   );
 }

@@ -12,7 +12,7 @@ const Item = styled.div`
 font-size: 16px;
  >.xxx{
    >.day{
-   background: #E5E5E5;
+   background: #99999999;
     line-height: 20px;
     padding:10px 16px;
     display: flex;
@@ -111,6 +111,7 @@ function Statistics() {
 
           </div>)}
       </Item>
+      <div className={'blank'}></div>
     </Layout>
   );
 }
